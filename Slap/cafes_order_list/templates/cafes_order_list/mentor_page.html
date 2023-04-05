@@ -1,0 +1,25 @@
+{% extends 'cafes_order_list/index.html' %}
+	{% block slide_bar%}
+	<div>
+<br>
+		<p>
+		<li><a href="{% url 'mentor_add_class' %}">Добавить класс</a></li>
+		<li><a href="{% url 'mentor_add_student' %}">Добавить ученика</a></li>
+		<li>Заказ текущего дня</li>
+		<li>История Заказов</li>
+
+		</p>
+	</div>
+{% endblock %}
+
+{% block content %}
+<h2>Учитель NAME класс class дата date</h2>
+<form action="{% url 'student_order' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="form-error">{{ form.non_field_errors }}</div>
+    {{ form.as_p }}
+
+    <button type="submit">Сформировать</button>
+</form>
+{% endblock %}

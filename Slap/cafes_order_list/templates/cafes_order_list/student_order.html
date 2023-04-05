@@ -1,0 +1,11 @@
+{% extends 'cafes_order_list/index.html' %}
+{% block content %}
+<form action="{% url 'student_order' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="form-error">{{ form.non_field_errors }}</div>
+    {{ form.as_p }}
+
+    <button type="submit">Добавить</button>
+</form>
+{% endblock %}
